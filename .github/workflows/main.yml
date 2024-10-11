@@ -20,9 +20,10 @@ jobs:
 
       - name: Set up version
         id: vars
-        run: | 
-          VERSION=$(git describe --tags --always)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+        
+      - name: Extract commit message
+        id: commit_message
+        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
@@ -42,5 +43,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: felipevidalsan/gift-app:latest,felipevidalsan/gift-app:${{ env.VERSION }}
+          tags: felipevidalsan/gift-app:latest,felipevidalsan/gift-app:${{ env.COMMIT_MESSAGE }}
           labels: ${{ steps.meta.outputs.labels }}

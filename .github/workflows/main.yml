@@ -17,9 +17,6 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-
-      - name: Set up version
-        id: vars
         
       - name: Extract commit message
         id: commit_message

@@ -20,8 +20,8 @@ jobs:
         
       - name: Extract commit message
         id: commit_message
-        run: echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
-
+        run:  echo "::set-output name=version::$(cat package.json | jq -r .version)"
+        
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7

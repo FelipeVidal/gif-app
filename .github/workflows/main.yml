@@ -40,5 +40,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: felipevidalsan/gift-app::${{ steps.version.outputs.version }},felipevidalsan/gift-app:${{ steps.version.outputs.version }}
+          tags: felipevidalsan/gift-app:${{ steps.version.outputs.version }},felipevidalsan/gift-app:${{ steps.version.outputs.version }}
           labels: ${{ steps.meta.outputs.labels }}
